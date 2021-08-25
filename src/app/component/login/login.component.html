@@ -1,0 +1,12 @@
+<div class="login-container">
+  <div class="form-container">
+    <p class="description">Log in or create an account</p>
+    <div *ngIf="error" class="validation">{{error}}</div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" role="form">
+      <input name="email" type="text" placeholder="Email Address" id="email" formControlName="email" class="form-control"/>
+      <input name="password" type="password" placeholder="Password" id="password" formControlName="password" class="form-control"/>
+      <button [disabled]="loading" type="submit">Log in</button><br>
+    </form>
+    <p>Don't have an account yet? <a class="join" routerLink="/register">Join</a></p>
+  </div>
+</div>
