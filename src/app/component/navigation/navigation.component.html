@@ -1,0 +1,20 @@
+<nav>
+  <div class="logo" routerLinkActive="active" routerLink="/home">SPORTVENUEN</div>
+  <ul>
+    <li><a routerLink="/favourites" *ngIf="authService.isLoggedIn()"><i class="fas fa-heart"></i> Favourites</a></li>
+    <div class="dropdown" *ngIf="authService.isLoggedIn()" >
+      <button class="drop-button"><i class="fas fa-user"></i>  Hi {{userDetails.name}} <i class="fas fa-chevron-down"></i></button>
+      <div class="dropdown-content">
+        <a routerLink="/user">My Account</a>
+        <a href="#">My Bookings</a>
+        <a routerLink="/venues">My Venues</a>
+        <a (click)="logout()">Log out</a>
+      </div>
+    </div>
+    <li><a routerLink="/explore" routerLinkActive="link-active" *ngIf="!authService.isLoggedIn()">Explore</a></li>
+    <li><a routerLink="/admin" *ngIf="authService.isAdmin()">Admin</a></li>
+    <li><a routerLink="/add-venue" routerLinkActive="link-active" *ngIf="!authService.isLoggedIn()">List your Venue</a></li>
+    <li><a routerLink="/login" routerLinkActive="active"  *ngIf="!authService.isLoggedIn()">Login</a></li>
+    <li><a routerLink="/register" routerLinkActive="link-active" *ngIf="!authService.isLoggedIn()">Join</a></li>
+  </ul>
+</nav>
