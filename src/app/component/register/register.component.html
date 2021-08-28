@@ -4,11 +4,17 @@
     <p>Already have an account? <a class="login" routerLink="/login">Login</a></p>
     <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <input name="name" type="text" placeholder="Name" formControlName="name" class="form-control">
+      <span *ngIf="name.invalid && name.touched" class="error">Name is required</span>
       <input name="surname" type="text" placeholder="Surname" formControlName="surname" class="form-control">
+      <span *ngIf="surname.invalid && surname.touched" class="error">Surname is required</span>
       <input name="email" type="text" placeholder="Email Address" formControlName="email" class="form-control">
-      <input name="password" type="password" placeholder="Create Password" formControlName="password" class="form-control">
-      <input name="confirmPassword" type="password" placeholder="Confirm Password" formControlName="confirmPassword" class="form-control">
+      <span *ngIf="email.invalid && email.touched" class="error">Email is incorrect</span>
+      <input name="password" type="password" placeholder="Create Password" formControlName="password" class="form-control" (change)="checkPasswords()">
+      <span *ngIf="password.invalid && password.touched" class="error">Password must have at least 8 characters</span>
+      <input name="confirmPassword" type="password" placeholder="Confirm Password" formControlName="confirmPassword" class="form-control" (change)="checkPasswords()">
+      <span *ngIf="password.invalid && password.touched && confirmPassword.hasError('mismatch')" class="error">Passwords do not match</span>
       <input name="phoneNumber" type="text" placeholder="Phone Number" formControlName="phoneNumber">
+      <span *ngIf="phoneNumber.invalid && phoneNumber.touched" class="error">Phone Number is incorrect</span>
       <button type="submit" [disabled]="loading" >Sign up</button><br>
     </form>
   </div>

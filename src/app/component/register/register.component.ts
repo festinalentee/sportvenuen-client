@@ -31,12 +31,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      name: new FormControl('', ),
-      surname: new FormControl('', ),
-      email: new FormControl('', ),
-      password: new FormControl('', ),
-      confirmPassword: new FormControl('', ),
-      phoneNumber: new FormControl('', )
+      name: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.requiredTrue]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(9), Validators.maxLength(12)])
     });
   }
 
@@ -62,7 +62,18 @@ export class RegisterComponent implements OnInit {
       });
   }
 
+  checkPasswords() {
+    if (this.confirmPassword.value == this.password.value) {
+      this.confirmPassword.setErrors(null);
+    } else {
+      this.confirmPassword.setErrors({ mismatch: true });
+    }
+  }
+
   get name() { return this.f.name; }
+  get surname() { return this.f.surname; }
   get email() { return this.f.email; }
   get password() { return this.f.password; }
+  get confirmPassword() { return this.f.confirmPassword; }
+  get phoneNumber() { return this.f.phoneNumber; }
 }

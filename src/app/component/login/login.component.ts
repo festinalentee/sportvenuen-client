@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
     this.loading = true;
     this.authService.login(this.email.value, this.password.value)
-     .subscribe({
+      .subscribe({
         next: () => {
           this.router.navigate(['user', this.userService.getUserById(this.authService.userValue.id)]);
 
