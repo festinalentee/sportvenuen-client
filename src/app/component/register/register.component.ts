@@ -1,15 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
-import {User} from "../../model/user";
-import {UserDetails} from "../../model/user-details";
-import {Role} from "../../model/role";
 
 @Component({
   selector: 'app-register',
@@ -27,7 +19,36 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {
+  }
+
+  get registerFormControls() {
+    return this.registerForm.controls;
+  }
+
+  get name() {
+    return this.registerFormControls.name;
+  }
+
+  get surname() {
+    return this.registerFormControls.surname;
+  }
+
+  get email() {
+    return this.registerFormControls.email;
+  }
+
+  get password() {
+    return this.registerFormControls.password;
+  }
+
+  get confirmPassword() {
+    return this.registerFormControls.confirmPassword;
+  }
+
+  get phoneNumber() {
+    return this.registerFormControls.phoneNumber;
+  }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -40,20 +61,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get f() { return this.registerForm.controls; }
-
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
       return;
     }
     this.loading = true;
-    let user: User = {id: null!, email: this.f.email.value, password: this.f.password.value, role: Role.ROLE_MEMBER, token: null!};
-    let userDetails: UserDetails = {userId: user.id, name: this.f.name.value, surname: this.f.surname.value, phoneNumber: this.f.phoneNumber.value};;
-    this.authService.register(user, userDetails)
+    this.authService.register(this.registerForm.value)
       .subscribe({
         next: () => {
-          this.router.navigate(['/login'], { relativeTo: this.route });
+          this.router.navigate(['/login'], {relativeTo: this.route});
         },
         error: error => {
           this.error = error;
@@ -66,14 +83,7 @@ export class RegisterComponent implements OnInit {
     if (this.confirmPassword.value == this.password.value) {
       this.confirmPassword.setErrors(null);
     } else {
-      this.confirmPassword.setErrors({ mismatch: true });
+      this.confirmPassword.setErrors({mismatch: true});
     }
   }
-
-  get name() { return this.f.name; }
-  get surname() { return this.f.surname; }
-  get email() { return this.f.email; }
-  get password() { return this.f.password; }
-  get confirmPassword() { return this.f.confirmPassword; }
-  get phoneNumber() { return this.f.phoneNumber; }
 }

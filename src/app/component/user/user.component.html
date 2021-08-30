@@ -1,0 +1,14 @@
+<div class="account-container">
+  <h1>Account Details</h1>
+  <h2>Please remember to keep your details up to date</h2>
+  <div class="account-panel">
+    <form class="account-form" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+      <p>Name <input name="name" type="text" formControlName="name"></p>
+      <p>Surname<input name="surname" type="text" formControlName="surname"></p>
+      <p>Email Address<input name="email" type="text" formControlName="email"></p>
+      <p>Phone Number<input name="phoneNumber" type="text" formControlName="phoneNumber"></p>
+      <button type="submit" [disabled]="loading">Save changes</button>
+      <br>
+    </form>
+  </div>
+</div>

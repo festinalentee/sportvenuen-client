@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../service/auth.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../service/user.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../model/user";
 
 @Component({
@@ -22,22 +21,30 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private userService: UserService
   ) {
-    // redirect to home if already logged in
-    if (this.authService.userValue) {
+    if (this.authService.tokenValue) {
       this.router.navigate(['/']);
     }
   }
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email:['', Validators.required],
-      password: ['', Validators.required]
-    });
+  get loginFormControls() {
+    return this.loginForm.controls;
   }
 
-  get f() { return this.loginForm.controls; }
+  get email() {
+    return this.loginFormControls.email;
+  }
+
+  get password() {
+    return this.loginFormControls.password;
+  }
+
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -48,8 +55,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email.value, this.password.value)
       .subscribe({
         next: () => {
-          this.router.navigate(['user', this.userService.getUserById(this.authService.userValue.id)]);
-
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigateByUrl(returnUrl);
         },
@@ -59,7 +64,4 @@ export class LoginComponent implements OnInit {
         }
       });
   }
-
-  get email() { return this.f.email; }
-  get password() { return this.f.password; }
 }
