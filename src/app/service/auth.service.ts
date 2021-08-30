@@ -16,8 +16,8 @@ export class AuthService {
   private readonly userSubject: BehaviorSubject<User>;
 
   constructor(private router: Router, private http: HttpClient, private userService: UserService) {
-    this.tokenSubject = new BehaviorSubject<Token>(null!);
-    this.userSubject = new BehaviorSubject<User>(null!);
+    this.tokenSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('token')!));
+    this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')!));
   }
 
   public get tokenValue(): Token {
@@ -48,6 +48,7 @@ export class AuthService {
         localStorage.setItem('token', JSON.stringify(token));
         this.tokenSubject.next(token);
         this.userService.getUser().subscribe((user) => {
+          localStorage.setItem('user', JSON.stringify(user));
           this.userSubject.next(user);
         });
         return token;
@@ -55,6 +56,7 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem('user');
     this.userSubject.next(null!);
     localStorage.removeItem('token');
     this.tokenSubject.next(null!);

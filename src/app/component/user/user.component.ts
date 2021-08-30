@@ -59,6 +59,7 @@ export class UserComponent implements OnInit {
     this.userService.updateUser(this.accountForm.value)
       .subscribe({
         next: user => {
+          localStorage.setItem('user', JSON.stringify(user));
           this.authService.getUserSubject().next(user);
           this.loading = false;
         },
