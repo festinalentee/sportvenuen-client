@@ -27,6 +27,7 @@ ul {
 li a {
   font-size: 1em;
   color: #000000;
+  cursor: pointer;
 }
 
 li a:hover {
@@ -59,6 +60,7 @@ li:last-child a:hover {
   border: none;
   background: none;
   font-size: 1em;
+  cursor: pointer;
   justify-content: space-around;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -71,6 +73,7 @@ li:last-child a:hover {
   font-size: 1em;
   display: none;
   position: absolute;
+  cursor: pointer;
   background-color: #ffffff;
   min-width: 10em;
   border-radius: 0.5em;
