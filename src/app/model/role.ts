@@ -1,4 +1,4 @@
-export enum Role {
-  ROLE_MEMBER = 'ROLE_MEMBER',
-  ROLE_ADMIN = 'ROLE_ADMIN'
+export class Role {
+  id: number;
+  name: string;
 }
