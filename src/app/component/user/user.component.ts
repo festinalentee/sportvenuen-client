@@ -13,11 +13,9 @@ import {AuthService} from "../../service/auth.service";
 export class UserComponent implements OnInit {
 
   user: User;
-
   accountForm: FormGroup;
   id: string;
   loading = false;
-  submitted = false;
   error = '';
 
   constructor(
@@ -54,7 +52,6 @@ export class UserComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
     if (this.accountForm.invalid) {
       return;
     }
@@ -63,7 +60,7 @@ export class UserComponent implements OnInit {
       .subscribe({
         next: user => {
           this.authService.getUserSubject().next(user);
-          this.router.navigateByUrl('/user');
+          this.loading = false;
         },
         error: error => {
           this.error = error;
