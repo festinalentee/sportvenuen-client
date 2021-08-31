@@ -1,4 +1,5 @@
 import {Role} from "./role";
+import {Venue} from "./venue";
 
 export class User {
   id: number;
@@ -8,4 +9,5 @@ export class User {
   surname: string;
   phoneNumber: string;
   roles: Role[];
+  venues: Venue[];
 }

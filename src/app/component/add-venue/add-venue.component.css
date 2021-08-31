@@ -1,0 +1,155 @@
+.list-venue-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+.list-venue-form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.details-inputs {
+  padding: 1em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  font-weight: bold;
+}
+
+.disciplines-container {
+  text-align: left;
+}
+
+.venue-details-container input,
+textarea {
+  background:rgba(255,255,255, 0.3);
+  box-shadow: 0 8px 8px #00000029;
+  border: none;
+  border-radius: 0.5em;
+  padding: 1em;
+  margin: 0.5em;
+  width: 98%;
+}
+
+.discipline-checkbox {
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+li {
+  font-size: 1.3em;
+}
+
+li input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #00A287;
+  border-radius: 0.1em;
+}
+
+li input[type="checkbox"]:checked {
+  background-color: #00A287;
+}
+
+.table-container {
+  padding: 2em;
+  width: 98%;
+}
+
+table {
+  font-size: 1.2em;
+  width: 100%;
+}
+
+td {
+  text-align: left;
+  font-weight: lighter;
+  vertical-align: middle;
+}
+
+th {
+  text-align: left;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+input[type="time"],
+input[type="number"]{
+  background:rgba(255,255,255, 0.3);
+  box-shadow: 0 8px 8px #00000029;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.3em;
+  width: 60%;
+  text-align: center;
+}
+
+.description-container {
+  margin-top: -3em;
+  padding: 1em;
+}
+
+.files-upload-container {
+  padding: 1em;
+}
+
+input[type="file"] {
+  border: 0;
+  height: 1px;
+  position: absolute;
+  width: 1px;
+}
+
+input[type="file"] + label, button {
+  background-color: #FF5B65;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 8px 8px #00000029;
+  padding: 1em;
+  border-radius: 0.5em;
+  width: 30%;
+  text-align: center;
+}
+
+input[type="file"] + label:hover {
+  background-color: #00A287;
+}
+
+.add {
+  width: 100%;
+  padding: 1em;
+}
+
+button {
+  border: none;
+  width: 100%;
+  background: #000000;
+}
+
+button:hover {
+  background: #00A287;
+}

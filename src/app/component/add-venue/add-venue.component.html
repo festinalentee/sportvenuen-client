@@ -1,0 +1,120 @@
+<div class="list-venue-container">
+  <h1>List your Venue</h1>
+  <h2>Complete the form and start filling your booking calendar today</h2>
+  <form [formGroup]="addVenueForm" (ngSubmit)="onSubmit()" class="list-venue-form">
+    <div class="venue-details-container">
+      <h3>VENUE DETAILS</h3>
+      <div class="details-inputs">
+        <input name="venue-type" type="text" placeholder="Venue Type" formControlName="venueType">
+        <input name="venue-name" type="text" placeholder="Venue Name" formControlName="venueName">
+        <input name="street-name" type="text" placeholder="Street Name" formControlName="streetName">
+        <input name="street-number" type="text" placeholder="Street Number" formControlName="streetNumber">
+        <input name="city" type="text" placeholder="City" formControlName="city">
+        <input name="postcode" type="text" placeholder="Postcode" formControlName="postcode">
+        <input name="country" type="text" placeholder="Country" formControlName="country">
+      </div>
+    </div>
+    <div class="disciplines-container">
+      <h3>SPORTS DISCIPLINES</h3>
+      <div class="discipline-checkbox">
+        <ul>
+          <li><input name="athletics" type="checkbox"> Athletics</li>
+          <li><input name="dance" type="checkbox"> Dance</li>
+          <li><input name="hockey" type="checkbox"> Hockey</li>
+          <li><input name="swimming" type="checkbox"> Swimming</li>
+        </ul>
+        <ul>
+          <li><input name="badminton" type="checkbox"> Badminton</li>
+          <li><input name="football" type="checkbox"> Football</li>
+          <li><input name="netball" type="checkbox"> Netball</li>
+          <li><input name="tableTennis" type="checkbox"> Table Tennis</li>
+        </ul>
+        <ul>
+          <li><input name="basketball" type="checkbox"> Basketball</li>
+          <li><input name="golf" type="checkbox"> Golf</li>
+          <li><input name="rugby" type="checkbox"> Rugby</li>
+          <li><input name="tennis" type="checkbox"> Tennis</li>
+        </ul>
+        <ul>
+          <li><input name="climbing" type="checkbox"> Climbing</li>
+          <li><input name="gym" type="checkbox"> Gym</li>
+          <li><input name="squash" type="checkbox"> Squash</li>
+          <li><input name="volleyball" type="checkbox"> Volleyball</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hours-container">
+      <h3>OPENING HOURS AND PRICES</h3>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Day of the week</th>
+            <th scope="col">Time From</th>
+            <th scope="col">Time To</th>
+            <th scope="col">Price [$ p/h]</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">Monday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          <tr>
+            <th scope="row">Thuesday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          <tr>
+            <th scope="row">Wednesday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          <tr>
+            <th scope="row">Thursday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          <tr>
+            <th scope="row">Friday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          <tr>
+            <th scope="row">Saturday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          <tr>
+            <th scope="row">Sunday</th>
+            <td><input name="timeFrom" type="time" step="900"></td>
+            <td><input name="timeTo" type="time" step="900"></td>
+            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="description-container">
+      <h3>DESCRIPTION</h3>
+      <textarea name="instructions" rows=30 placeholder="Write instructions..."></textarea>
+    </div>
+    <div class="files-container">
+      <h3>PHOTOS</h3>
+      <div class="files-upload-container">
+        <input type="file" id="file" multiple>
+        <label for="file">Select files</label>
+      </div>
+      <div class="add">
+        <button type="submit" class="addVenueButton">Add Venue</button>
+      </div>
+    </div>
+  </form>
+</div>
