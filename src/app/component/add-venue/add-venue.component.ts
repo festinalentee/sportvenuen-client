@@ -23,6 +23,42 @@ export class AddVenueComponent implements OnInit {
   ) {
   }
 
+  get addVenueFormControls() {
+    return this.addVenueForm.controls;
+  }
+
+  get venueType() {
+    return this.addVenueFormControls.venueType;
+  }
+
+  get venueName() {
+    return this.addVenueFormControls.venueName;
+  }
+
+  get streetName() {
+    return this.addVenueFormControls.streetName;
+  }
+
+  get streetNumber() {
+    return this.addVenueFormControls.streetNumber;
+  }
+
+  get city() {
+    return this.addVenueFormControls.city;
+  }
+
+  get postcode() {
+    return this.addVenueFormControls.postcode;
+  }
+
+  get country() {
+    return this.addVenueFormControls.country;
+  }
+
+  get description() {
+    return this.addVenueFormControls.description;
+  }
+
   ngOnInit(): void {
     this.addVenueForm = this.formBuilder.group({
       venueType: ['', Validators.required],
@@ -31,7 +67,8 @@ export class AddVenueComponent implements OnInit {
       streetNumber: ['', Validators.required],
       city: ['', Validators.required],
       postcode: ['', Validators.required],
-      country: ['', Validators.required]
+      country: ['', Validators.required],
+      description: ['', [Validators.required, Validators.max(250)]]
     });
   }
 

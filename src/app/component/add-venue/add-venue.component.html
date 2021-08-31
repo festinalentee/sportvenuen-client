@@ -6,12 +6,19 @@
       <h3>VENUE DETAILS</h3>
       <div class="details-inputs">
         <input name="venue-type" type="text" placeholder="Venue Type" formControlName="venueType">
+        <span *ngIf="venueType.invalid && venueType.touched" class="error">Venue Type is required</span>
         <input name="venue-name" type="text" placeholder="Venue Name" formControlName="venueName">
+        <span *ngIf="venueName.invalid && venueName.touched" class="error">Venue Name is required</span>
         <input name="street-name" type="text" placeholder="Street Name" formControlName="streetName">
+        <span *ngIf="streetName.invalid && streetName.touched" class="error">Street Name is required</span>
         <input name="street-number" type="text" placeholder="Street Number" formControlName="streetNumber">
+        <span *ngIf="streetNumber.invalid && streetNumber.touched" class="error">Street number is required</span>
         <input name="city" type="text" placeholder="City" formControlName="city">
+        <span *ngIf="city.invalid && city.touched" class="error">City is required</span>
         <input name="postcode" type="text" placeholder="Postcode" formControlName="postcode">
+        <span *ngIf="postcode.invalid && postcode.touched" class="error">Postcode is required</span>
         <input name="country" type="text" placeholder="Country" formControlName="country">
+        <span *ngIf="country.invalid && country.touched" class="error">Country is required</span>
       </div>
     </div>
     <div class="disciplines-container">
@@ -104,7 +111,9 @@
     </div>
     <div class="description-container">
       <h3>DESCRIPTION</h3>
-      <textarea name="instructions" rows=30 placeholder="Write instructions..."></textarea>
+      <textarea name="instructions" rows=30 placeholder="Write instructions..." formControlName="description"></textarea>
+      <span *ngIf="description.invalid && description.touched" class="error">Description is required.</span>
+
     </div>
     <div class="files-container">
       <h3>PHOTOS</h3>
