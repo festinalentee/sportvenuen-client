@@ -24,6 +24,10 @@ export class AuthService {
     return this.tokenSubject.value;
   }
 
+  public get userValue(): User {
+    return this.userSubject.value;
+  }
+
   public getUserSubject(): BehaviorSubject<User> {
     return this.userSubject;
   }
