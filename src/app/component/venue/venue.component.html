@@ -1,0 +1,93 @@
+<div class="venue-container">
+  <div class="img-container"></div>
+  <div class="disciplines-container">
+    <ul>
+      <li><a>Basketball</a></li>
+      <li><a>Rugby</a></li>
+      <li><a>Tennis</a></li>
+      <li><a>Volleyball</a></li>
+    </ul>
+  </div>
+  <div class="info-container">
+    <div class="left-info">
+      <div class="address-container">
+        <h2>{{venue.venueType}} {{venue.venueName}}</h2>
+        <p></p>
+        <p>{{venue.streetName}} {{venue.streetNumber}}</p>
+        <p>{{venue.postcode}} {{venue.city}}, {{venue.country}}</p>
+      </div>
+      <div class="calendar-container">
+        <h3><i class="fas fa-calendar-alt"></i> Calendar</h3>
+      </div>
+      <div class="hours-container">
+        <h3><i class="far fa-calendar"></i> Opening Hours and Prices</h3>
+        <div class="table-container">
+          <table class="table">
+            <tbody>
+            <tr>
+              <th scope="row">Monday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            <tr>
+              <th scope="row">Thuesday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            <tr>
+              <th scope="row">Wednesday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            <tr>
+              <th scope="row">Thursday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            <tr>
+              <th scope="row">Friday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            <tr>
+              <th scope="row">Saturday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            <tr>
+              <th scope="row">Sunday</th>
+              <th scope="row">14:00 - 21:00</th>
+              <th scope="row">$20.00/h</th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="location-container">
+        <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+        <div class="img"></div>
+        <h4><i class="fas fa-map-marker"></i> aleja 29 Listopada 58, Cracow</h4>
+      </div>
+      <div class="description-container">
+        <h3><i class="fas fa-sticky-note"></i> Description</h3>
+        <h5>{{venue.description}}</h5>
+      </div>
+    </div>
+    <div class="right-info">
+      <div class="tile-container">
+        <div class="up-info">
+          <h6>We need this details for booking</h6>
+          <form>
+            <input name="date" type="date">
+            <input name="timeFrom" type="time" step="900">
+            <input name="timeTo" type="time" step="900">
+            <button type="submit" class="bookNowButton">BOOK NOW</button>
+          </form>
+        </div>
+        <div class="down-info">
+          <p class="fav"><i class="far fa-heart"></i> Add to Favourites</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'explore', component: ExploreComponent},
-  {path: 'venue', component: VenueComponent},
+  {path: 'venue/:id', component: VenueComponent},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: {name: ['ROLE_ADMIN']}}},
   {path: 'add-venue', component: AddVenueComponent, canActivate: [AuthGuard]},

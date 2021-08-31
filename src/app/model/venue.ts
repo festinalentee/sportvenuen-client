@@ -7,4 +7,5 @@ export class Venue {
   city: string;
   postcode: string;
   country: string;
+  description: string;
 }
