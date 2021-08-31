@@ -1,0 +1,31 @@
+<div class="favourites-container">
+  <h1>My Venues</h1>
+  <h2>Manage your venues here</h2>
+  <div *ngFor="let venue of venues" class="tile-container">
+    <div class="tile-img-container"></div>
+    <div class="info-container">
+      <div class="left-info">
+        <h3>{{venue.venueType}}</h3>
+        <p>{{venue.venueName}}</p>
+        <p>{{venue.streetName}} {{venue.streetNumber}}, {{venue.city}}</p>
+        <div class="related-disciplines">
+          <h4>Related disciplines</h4>
+          <ul>
+            <li><i class="fas fa-baseball-ball"></i></li>
+            <li><i class="fas fa-baseball-ball"></i></li>
+            <li><i class="fas fa-baseball-ball"></i></li>
+          </ul>
+        </div>
+      </div>
+      <div class="right-info">
+        <ul>
+          <li><a routerLink="/venue-bookings" >BOOKINGS</a></li>
+          <li><a routerLink="/venue" >DETAILS</a></li>
+          <li><a routerLink="/edit-venue" >EDIT</a></li>
+          <li><a class="delete" routerLink="/delete-venue" >DELETE</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
