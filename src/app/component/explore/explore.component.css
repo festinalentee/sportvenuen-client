@@ -1,0 +1,54 @@
+.explore-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2{
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
+.disciplines-container {
+  text-align: center;
+  width: 80%;
+  background: #ffffff;
+  box-shadow: 0 5px 10px #00000029;
+  border-radius: 0.5em;
+  margin-top: 2em;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  padding: 2em;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+}
+
+li i {
+  color: #00A287;
+  font-size: 5em;
+  padding: 0.2em;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  width: 5em;
+  height: 6em;
+  padding: 0.52em;
+  filter: invert(39%) sepia(36%) saturate(4248%) hue-rotate(147deg) brightness(96%) contrast(101%);
+}
