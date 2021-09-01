@@ -1,29 +1,19 @@
 <div class="home-container">
   <div class="img-container">
-    <form class="form-container">
+    <form [formGroup]="searchVenuesForm" (ngSubmit)="onSubmit()" class="form-container">
       <h1>Find and book a venue in your area</h1>
-      <select id="discipline" class="discipline-selectbox" name="Discipline">
-        <option value="Volleyball">Volleyball</option>
-        <option value="Basketball">Basketball</option>
-        <option value="Golf">Golf</option>
-        <option value="Netball">Netball</option>
-        <option value="Football">Football</option>
-        <option value="Tennis">Tennis</option>
-      </select>
-      <select id="location" class="location-selectbox" name="Location">
-        <option value="Location">Location</option>
-        <option value="Location">Location</option>
-        <option value="Location">Location</option>
-        <option value="Location">Location</option>
-      </select>
+      <div>
+        <input name="venueType" placeholder="Venue Type" formControlName="venueType">
+        <input name="city" placeholder="City" formControlName="city">
+      </div>
       <button type="submit">Search</button>
     </form>
   </div>
   <div class="icon-info">
     <ul>
-      <li><i class="fas fa-search"></i> SEARCH </li>
-      <li><i class="far fa-calendar-alt"></i> BOOK </li>
-      <li><i class="fas fa-running"></i> PLAY </li>
+      <li><i class="fas fa-search"></i> SEARCH</li>
+      <li><i class="far fa-calendar-alt"></i> BOOK</li>
+      <li><i class="fas fa-running"></i> PLAY</li>
     </ul>
   </div>
   <h2 routerLink="/explore"> Explore Our Venues</h2>
@@ -59,7 +49,8 @@
     </div>
     <div class="list-details-container">
       <h4>List your venue and get more bookings!</h4>
-      <h5>We are the world’s fastest-growing online marketplace for sports venues booking. We're giving you direct access to the customers.</h5><br>
+      <h5>We are the world’s fastest-growing online marketplace for sports venues booking. We're giving you direct
+        access to the customers.</h5><br>
       <a routerLink="/add-venue">List your Venue</a>
     </div>
   </div>

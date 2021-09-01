@@ -29,4 +29,18 @@ export class VenueService {
     venue.id = venueId;
     return this.http.put<Venue>(`${environment.apiUrl}/venue`, venue);
   }
+
+  addToFavourites(venueId: number) {
+    let userId = this.authService.userValue.id;
+    return this.http.post<any>(`${environment.apiUrl}/favourites/${userId}/${venueId}`, null);
+  }
+
+  removeFromFavourites(venueId: number) {
+    let userId = this.authService.userValue.id;
+    return this.http.put<any>(`${environment.apiUrl}/favourites/${userId}/${venueId}`, null);
+  }
+
+  searchVenues(venueType: string, city: string) {
+    return this.http.get<Venue[]>(`${environment.apiUrl}/venue/search?venueType=${venueType}&city=${city}`)
+  }
 }

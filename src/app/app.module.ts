@@ -8,7 +8,6 @@ import {LoginComponent} from './component/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavigationComponent} from './component/navigation/navigation.component';
 import {RegisterComponent} from './component/register/register.component';
-import {AdminComponent} from './component/admin/admin.component';
 import {ErrorInterceptor} from "./interceptor/error.interceptor";
 import {JwtInterceptor} from "./interceptor/jwt.interceptor";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -19,6 +18,7 @@ import {FavouritesComponent} from './component/favourites/favourites.component';
 import {MyVenuesComponent} from './component/my-venues/my-venues.component';
 import {MyBookingsComponent} from './component/my-bookings/my-bookings.component';
 import {VenueComponent} from './component/venue/venue.component';
+import {SearchResultsComponent} from './component/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +27,14 @@ import {VenueComponent} from './component/venue/venue.component';
     LoginComponent,
     NavigationComponent,
     RegisterComponent,
-    AdminComponent,
     UserComponent,
     AddVenueComponent,
     ExploreComponent,
     FavouritesComponent,
     MyVenuesComponent,
     MyBookingsComponent,
-    VenueComponent
+    VenueComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
