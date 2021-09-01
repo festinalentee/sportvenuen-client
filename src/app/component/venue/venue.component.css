@@ -190,6 +190,7 @@ button:hover {
 .fav {
   font-size: 1em;
   margin-bottom: 0.1em;
+  cursor: pointer;
 }
 
 .fa-heart {

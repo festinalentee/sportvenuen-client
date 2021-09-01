@@ -85,7 +85,10 @@
           </form>
         </div>
         <div class="down-info">
-          <p class="fav"><i class="far fa-heart"></i> Add to Favourites</p>
+          <p class="fav" *ngIf="!isFavourite" (click)="addToFavourites()"><i class="far fa-heart"></i> Add to Favourites
+          </p>
+          <p class="fav" *ngIf="isFavourite" (click)="removeFromFavourites()"><i class="fas fa-heart"></i> Remove from
+            Favourites</p>
         </div>
       </div>
     </div>

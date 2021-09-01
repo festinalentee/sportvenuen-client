@@ -1,0 +1,28 @@
+<div class="favourites-container">
+  <h1>My Favourites</h1>
+  <h2>Book with SPORTVENUEN for best prices and compare offers from all venues</h2>
+  <div *ngFor="let venue of favouriteVenues" class="tile-container">
+    <div class="tile-img-container"></div>
+    <div class="info-container">
+      <div class="left-info">
+        <h3>{{venue.venueType}}</h3>
+        <p>{{venue.venueName}}</p>
+        <p>{{venue.streetName}} {{venue.streetNumber}}, {{venue.city}}</p>
+        <div class="related-disciplines">
+          <h4>Related disciplines</h4>
+          <ul>
+            <li><i class="fas fa-baseball-ball"></i></li>
+            <li><i class="fas fa-baseball-ball"></i></li>
+            <li><i class="fas fa-baseball-ball"></i></li>
+          </ul>
+        </div>
+      </div>
+      <div class="right-info">
+        <ul>
+          <li class="li-heart" (click)="removeFromFavourites(venue.id)"><i class="fas fa-heart"></i></li>
+          <li><a routerLink="/venue/{{venue.id}}">DETAILS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

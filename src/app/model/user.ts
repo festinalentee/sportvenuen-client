@@ -10,4 +10,5 @@ export class User {
   phoneNumber: string;
   roles: Role[];
   venues: Venue[];
+  favourites: Venue[];
 }
