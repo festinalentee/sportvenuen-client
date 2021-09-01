@@ -111,7 +111,8 @@
     </div>
     <div class="description-container">
       <h3>DESCRIPTION</h3>
-      <textarea name="instructions" rows=30 placeholder="Write instructions..." formControlName="description"></textarea>
+      <textarea name="instructions" rows=30 placeholder="Write instructions..."
+                formControlName="description"></textarea>
       <span *ngIf="description.invalid && description.touched" class="error">Description is required.</span>
 
     </div>
@@ -121,9 +122,14 @@
         <input type="file" id="file" multiple>
         <label for="file">Select files</label>
       </div>
-      <div class="add">
+      <div *ngIf="!editMode; else myElse" class="add">
         <button type="submit" class="addVenueButton">Add Venue</button>
       </div>
+      <ng-template #myElse>
+        <div class="add">
+          <button type="submit" class="addVenueButton">Update Venue</button>
+        </div>
+      </ng-template>
     </div>
   </form>
 </div>

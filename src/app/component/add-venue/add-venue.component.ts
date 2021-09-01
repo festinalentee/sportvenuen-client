@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {VenueService} from "../../service/venue.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Venue} from "../../model/venue";
 
 @Component({
   selector: 'app-add-venue',
@@ -14,12 +15,16 @@ export class AddVenueComponent implements OnInit {
   addVenueForm: FormGroup;
   loading = false;
   error = '';
+  editMode = false;
+  venueId: number;
+  venue: Venue = new Venue();
 
   constructor(
     private formBuilder: FormBuilder,
     private venueService: VenueService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) {
   }
 
@@ -60,6 +65,8 @@ export class AddVenueComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.venueId = this.route.snapshot.params.id;
+    this.editMode = !!this.venueId;
     this.addVenueForm = this.formBuilder.group({
       venueType: ['', Validators.required],
       venueName: ['', Validators.required],
@@ -68,8 +75,26 @@ export class AddVenueComponent implements OnInit {
       city: ['', Validators.required],
       postcode: ['', Validators.required],
       country: ['', Validators.required],
-      description: ['', [Validators.required, Validators.max(250)]]
+      description: ['', Validators.required]
     });
+
+    if (this.editMode) {
+      this.venueService.getVenue(this.venueId).subscribe(
+        venue => {
+          this.venue = venue;
+          this.addVenueForm = this.formBuilder.group({
+            venueType: [this.venue.venueType, Validators.required],
+            venueName: [this.venue.venueName, Validators.required],
+            streetName: [this.venue.streetName, Validators.required],
+            streetNumber: [this.venue.streetNumber, Validators.required],
+            city: [this.venue.city, Validators.required],
+            postcode: [this.venue.postcode, Validators.required],
+            country: [this.venue.country, Validators.required],
+            description: [this.venue.description, Validators.required]
+          });
+        }
+      )
+    }
   }
 
   onSubmit() {
@@ -77,23 +102,39 @@ export class AddVenueComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.venueService.saveVenue(this.addVenueForm.value)
-      .subscribe({
-        next: venue => {
-          console.log(venue)
-          this.venueService.addVenueToUser(this.authService.userValue.id, venue.id).subscribe(
-            user => {
-              localStorage.setItem('user', JSON.stringify(user));
-              this.authService.getUserSubject().next(user);
-            }
-          );
-          this.loading = false;
-          this.router.navigateByUrl('/my-venues')
-        },
-        error: error => {
-          this.error = error;
-          this.loading = false;
-        }
-      });
+    if (!this.editMode) {
+      this.venueService.saveVenue(this.addVenueForm.value)
+        .subscribe({
+          next: venue => {
+            this.venueService.addVenueToUser(this.authService.userValue.id, venue.id).subscribe(
+              user => {
+                localStorage.setItem('user', JSON.stringify(user));
+                this.authService.getUserSubject().next(user);
+              }
+            );
+            this.loading = false;
+            this.router.navigateByUrl('/my-venues')
+          },
+          error: error => {
+            this.error = error;
+            this.loading = false;
+          }
+        });
+    } else {
+      this.venueService.updateVenue(this.addVenueForm.value, this.venueId)
+        .subscribe({
+          next: venue => {
+            let updateItem = this.authService.userValue.venues.find(value => value.id == venue.id);
+            let index = this.authService.userValue.venues.indexOf(updateItem!);
+            this.authService.userValue.venues[index] = venue;
+            this.loading = false;
+            this.router.navigateByUrl('/my-venues')
+          },
+          error: error => {
+            this.error = error;
+            this.loading = false;
+          }
+        });
+    }
   }
 }

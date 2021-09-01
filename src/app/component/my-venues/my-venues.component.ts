@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 import {Venue} from "../../model/venue";
+import {VenueService} from "../../service/venue.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-venues',
@@ -10,7 +12,7 @@ import {Venue} from "../../model/venue";
 export class MyVenuesComponent implements OnInit {
   public venues: Venue[];
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private venueService: VenueService, private route: Router) {
   }
 
   ngOnInit(): void {
