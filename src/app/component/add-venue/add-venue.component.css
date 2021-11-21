@@ -7,13 +7,9 @@
 }
 
 .list-venue-form {
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
-}
-
-.details-inputs {
-  padding: 1em;
 }
 
 h1 {
@@ -37,26 +33,34 @@ h3 {
 
 .venue-details-container input,
 textarea {
+  display: flex;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 8px #00000029;
   border: none;
   border-radius: 0.5em;
   padding: 1em;
-  margin: 0.5em;
-  width: 98%;
+  margin-bottom: 0.5em;
+  margin-left: 2%;
+  width: 94%;
 }
 
 .discipline-checkbox {
   display: flex;
   flex-direction: row;
-  padding: 1em;
+  margin-left: 2%;
 }
 
 ul {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 0;
+  padding: 0 5em 0 2em;
+}
+
+ul:last-child {
+  padding: 0;
 }
 
 li {
@@ -76,25 +80,30 @@ li input[type="checkbox"]:checked {
 }
 
 .table-container {
-  padding: 2em;
-  width: 98%;
+  margin-left: 2%;
 }
 
 table {
-  font-size: 1.2em;
-  width: 100%;
+  font-size: 1.1em;
+  width: 98%;
 }
 
 td {
   text-align: left;
   font-weight: lighter;
   vertical-align: middle;
+  padding-left: 2em;
 }
 
 th {
   text-align: left;
   vertical-align: middle;
   font-weight: normal;
+  padding-left: 2em;
+}
+
+th:first-child {
+  padding-left: 0;
 }
 
 input[type="time"],
@@ -103,25 +112,16 @@ input[type="number"] {
   box-shadow: 0 8px 8px #00000029;
   border: none;
   border-radius: 0.5em;
-  padding: 0.3em;
-  width: 60%;
+  padding: 0.4em;
+  width: 100%;
   text-align: center;
-}
-
-.description-container {
-  margin-top: -3em;
-  padding: 1em;
-}
-
-.files-upload-container {
-  padding: 1em;
 }
 
 input[type="file"] {
   border: 0;
-  height: 1px;
+  height: 5px;
   position: absolute;
-  width: 1px;
+  width: 0;
 }
 
 input[type="file"] + label, button {
@@ -129,7 +129,7 @@ input[type="file"] + label, button {
   color: #ffffff;
   cursor: pointer;
   box-shadow: 0 8px 8px #00000029;
-  padding: 1em;
+  padding: 0.8em;
   border-radius: 0.5em;
   width: 30%;
   text-align: center;
@@ -141,13 +141,14 @@ input[type="file"] + label:hover {
 
 .add {
   width: 100%;
-  padding: 1em;
+  margin-top: 1em;
 }
 
 button {
   border: none;
-  width: 100%;
+  width: 98%;
   background: #000000;
+  margin-top: 1em;
 }
 
 button:hover {
