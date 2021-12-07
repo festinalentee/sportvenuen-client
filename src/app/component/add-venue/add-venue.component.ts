@@ -4,6 +4,7 @@ import {AuthService} from "../../service/auth.service";
 import {VenueService} from "../../service/venue.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Venue} from "../../model/venue";
+import {OpeningDetailsService} from "../../service/opening-details.service";
 
 @Component({
   selector: 'app-add-venue',
@@ -18,10 +19,36 @@ export class AddVenueComponent implements OnInit {
   editMode = false;
   venueId: number;
   venue: Venue = new Venue();
+  details: any[] = [{
+    dateFrom: '',
+    dateTo: '',
+    mondayFrom: '',
+    mondayTo: '',
+    tuesdayFrom: '',
+    tuesdayTo: '',
+    wednesdayFrom: '',
+    wednesdayTo: '',
+    thursdayFrom: '',
+    thursdayTo: '',
+    fridayFrom: '',
+    fridayTo: '',
+    saturdayFrom: '',
+    saturdayTo: '',
+    sundayFrom: '',
+    sundayTo: '',
+    mondayPrice: '',
+    tuesdayPrice: '',
+    wednesdayPrice: '',
+    thursdayPrice: '',
+    fridayPrice: '',
+    saturdayPrice: '',
+    sundayPrice: ''
+  }];
 
   constructor(
     private formBuilder: FormBuilder,
     private venueService: VenueService,
+    private openingDetailsService: OpeningDetailsService,
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
@@ -64,6 +91,38 @@ export class AddVenueComponent implements OnInit {
     return this.addVenueFormControls.description;
   }
 
+  addOpeningDetails() {
+    this.details.push({
+      dateFrom: '',
+      dateTo: '',
+      mondayFrom: '',
+      mondayTo: '',
+      tuesdayFrom: '',
+      tuesdayTo: '',
+      wednesdayFrom: '',
+      wednesdayTo: '',
+      thursdayFrom: '',
+      thursdayTo: '',
+      fridayFrom: '',
+      fridayTo: '',
+      saturdayFrom: '',
+      saturdayTo: '',
+      sundayFrom: '',
+      sundayTo: '',
+      mondayPrice: '',
+      tuesdayPrice: '',
+      wednesdayPrice: '',
+      thursdayPrice: '',
+      fridayPrice: '',
+      saturdayPrice: '',
+      sundayPrice: ''
+    });
+  }
+
+  removeOpeningDetails(i: number) {
+    this.details.splice(i, 1);
+  }
+
   ngOnInit(): void {
     this.venueId = this.route.snapshot.params.id;
     this.editMode = !!this.venueId;
@@ -90,7 +149,7 @@ export class AddVenueComponent implements OnInit {
             city: [this.venue.city, Validators.required],
             postcode: [this.venue.postcode, Validators.required],
             country: [this.venue.country, Validators.required],
-            description: [this.venue.description, Validators.required]
+            description: [this.venue.description, Validators.required],
           });
         }
       )
@@ -112,6 +171,8 @@ export class AddVenueComponent implements OnInit {
                 this.authService.getUserSubject().next(user);
               }
             );
+            let csvString = this.details.map(o => Object.values(o).join(";")).join("\n");
+            this.openingDetailsService.saveOpeningDetails(venue.id, csvString).subscribe();
             this.loading = false;
             this.router.navigateByUrl('/my-venues')
           },

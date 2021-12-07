@@ -50,6 +50,7 @@ textarea {
   display: flex;
   flex-direction: row;
   padding: 1em;
+  margin-left: 4em;
 }
 
 ul {
@@ -76,40 +77,64 @@ li input[type="checkbox"]:checked {
 }
 
 .table-container {
-  padding: 2em;
-  width: 98%;
+  padding: 1em;
+  table-layout: auto;
+  width: 100%
 }
 
 table {
   font-size: 1.2em;
-  width: 100%;
+  width: 98%;
 }
 
 td {
-  text-align: left;
+  text-align: center;
   font-weight: lighter;
   vertical-align: middle;
 }
 
 th {
-  text-align: left;
   vertical-align: middle;
   font-weight: normal;
 }
 
+tr th:first-child {
+  text-align: left;
+}
+
+tr th {
+  text-align: center;
+}
+
+tr th:last-child {
+  text-align: center;
+  padding-left: 10em;
+}
+
+tr td:last-child {
+  text-align: right;
+}
+
+tr.spaceUnder > td,
+tr.spaceUnder > th {
+  padding-bottom: 1.5em;
+}
+
 input[type="time"],
-input[type="number"] {
+input[type="number"],
+input[type="date"] {
   background: rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 8px #00000029;
   border: none;
   border-radius: 0.5em;
+  box-sizing: border-box;
   padding: 0.3em;
   width: 60%;
   text-align: center;
 }
 
 .description-container {
-  margin-top: -3em;
+  margin-top: 1em;
   padding: 1em;
 }
 
@@ -146,7 +171,7 @@ input[type="file"] + label:hover {
 
 button {
   border: none;
-  width: 100%;
+  width: 98%;
   background: #000000;
 }
 
@@ -167,4 +192,8 @@ input[type="text"].ng-valid {
   font-size: 0.8em;
   text-align: left;
   margin-left: 1em;
+}
+
+.dynamic-table {
+  padding: 1em;
 }

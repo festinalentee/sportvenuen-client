@@ -53,57 +53,73 @@
     <div class="hours-container">
       <h3>OPENING HOURS AND PRICES</h3>
       <div class="table-container">
-        <table class="table">
+        <button type="button" class="btn btn-primary mb-2" (click)="addOpeningDetails()">Add table</button>
+        <table class="table" *ngFor="let detail of details; let i = index;">
           <thead>
           <tr>
-            <th scope="col">Day of the week</th>
-            <th scope="col">Time From</th>
-            <th scope="col">Time To</th>
-            <th scope="col">Price [$ p/h]</th>
+            <th><h4>OpeningDetails {{i + 1}}</h4></th>
+            <td></td><td></td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="removeOpeningDetails(i)">Remove</button></td>
+          </tr>
+          <tr>
+            <th>Date From</th>
+            <td><input type="date" class="form-control" [(ngModel)]="detail.dateFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td></td><td></td>
+          </tr>
+          <tr class="spaceUnder">
+            <th>Date To</th>
+            <td><input type="date" class="form-control" [(ngModel)]="detail.dateTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <th>Day</th>
+            <th>Time From</th>
+            <th>Time To</th>
+            <th>Price</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <th scope="row">Monday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Monday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.mondayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.mondayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.mondayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           <tr>
-            <th scope="row">Thuesday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Tuesday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.tuesdayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.tuesdayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.tuesdayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           <tr>
-            <th scope="row">Wednesday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Wednesday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.wednesdayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.wednesdayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.wednesdayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           <tr>
-            <th scope="row">Thursday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Thursday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.thursdayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.thursdayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.thursdayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           <tr>
-            <th scope="row">Friday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Friday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.fridayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.fridayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.fridayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           <tr>
-            <th scope="row">Saturday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Saturday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.saturdayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.saturdayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.saturdayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           <tr>
-            <th scope="row">Sunday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+            <th>Sunday</th>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.sundayFrom" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="time" step="900" class="form-control" [(ngModel)]="detail.sundayTo" [ngModelOptions]="{standalone: true}"/></td>
+            <td><input type="number" step="5" class="form-control" [(ngModel)]="detail.sundayPrice" [ngModelOptions]="{standalone: true}"/></td>
           </tr>
           </tbody>
         </table>
@@ -111,10 +127,8 @@
     </div>
     <div class="description-container">
       <h3>DESCRIPTION</h3>
-      <textarea name="instructions" rows=30 placeholder="Write instructions..."
-                formControlName="description"></textarea>
+      <textarea name="instructions" rows=30 placeholder="Write instructions..." formControlName="description"></textarea>
       <span *ngIf="description.invalid && description.touched" class="error">Description is required.</span>
-
     </div>
     <div class="files-container">
       <h3>PHOTOS</h3>
