@@ -3,7 +3,6 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Venue} from "../model/venue";
 import {AuthService} from "./auth.service";
-import {User} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
