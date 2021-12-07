@@ -24,40 +24,40 @@
         <div class="table-container">
           <table class="table">
             <tbody>
-            <tr>
+            <tr *ngIf="openingDetails.mondayFrom && openingDetails.mondayTo && openingDetails.mondayPrice">
               <th scope="row">Monday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+              <th scope="row">{{openingDetails.mondayFrom}} - {{openingDetails.mondayTo}}</th>
+              <th scope="row">{{openingDetails.mondayPrice}}</th>
             </tr>
-            <tr>
-              <th scope="row">Thuesday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+            <tr *ngIf="openingDetails.tuesdayFrom && openingDetails.tuesdayTo && openingDetails.tuesdayPrice">
+              <th scope="row">Tuesday</th>
+              <th scope="row">{{openingDetails.tuesdayFrom}} - {{openingDetails.tuesdayTo}}</th>
+              <th scope="row">{{openingDetails.tuesdayPrice}}</th>
             </tr>
-            <tr>
+            <tr *ngIf="openingDetails.wednesdayFrom && openingDetails.wednesdayTo && openingDetails.wednesdayPrice">
               <th scope="row">Wednesday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+              <th scope="row">{{openingDetails.wednesdayFrom}} - {{openingDetails.wednesdayTo}}</th>
+              <th scope="row">{{openingDetails.wednesdayPrice}}</th>
             </tr>
-            <tr>
+            <tr *ngIf="openingDetails.thursdayFrom && openingDetails.thursdayTo && openingDetails.thursdayPrice">
               <th scope="row">Thursday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+              <th scope="row">{{openingDetails.thursdayFrom}} - {{openingDetails.thursdayTo}}</th>
+              <th scope="row">{{openingDetails.thursdayPrice}}</th>
             </tr>
-            <tr>
+            <tr *ngIf="openingDetails.fridayFrom && openingDetails.fridayTo && openingDetails.fridayPrice">
               <th scope="row">Friday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+              <th scope="row">{{openingDetails.fridayFrom}} - {{openingDetails.fridayTo}}</th>
+              <th scope="row">{{openingDetails.fridayPrice}}</th>
             </tr>
-            <tr>
+            <tr *ngIf="openingDetails.saturdayFrom && openingDetails.saturdayTo && openingDetails.saturdayPrice">
               <th scope="row">Saturday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+              <th scope="row">{{openingDetails.saturdayFrom}} - {{openingDetails.saturdayTo}}</th>
+              <th scope="row">{{openingDetails.saturdayPrice}}</th>
             </tr>
-            <tr>
+            <tr *ngIf="openingDetails.sundayFrom && openingDetails.sundayTo && openingDetails.sundayPrice">
               <th scope="row">Sunday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+              <th scope="row">{{openingDetails.sundayFrom}} - {{openingDetails.sundayTo}}</th>
+              <th scope="row">{{openingDetails.sundayPrice}}</th>
             </tr>
             </tbody>
           </table>
@@ -66,7 +66,7 @@
       <div class="location-container">
         <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
         <div class="img"></div>
-        <h4><i class="fas fa-map-marker"></i> aleja 29 Listopada 58, Cracow</h4>
+        <h4><i class="fas fa-map-marker"></i> {{venue.streetName}} {{venue.streetNumber}}, {{venue.city}}</h4>
       </div>
       <div class="description-container">
         <h3><i class="fas fa-sticky-note"></i> Description</h3>
