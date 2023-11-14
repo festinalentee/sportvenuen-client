@@ -62,48 +62,14 @@
             <th scope="col">Price [$ p/h]</th>
           </tr>
           </thead>
-          <tbody>
-          <tr>
-            <th scope="row">Monday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
-          </tr>
-          <tr>
-            <th scope="row">Thuesday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
-          </tr>
-          <tr>
-            <th scope="row">Wednesday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
-          </tr>
-          <tr>
-            <th scope="row">Thursday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
-          </tr>
-          <tr>
-            <th scope="row">Friday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
-          </tr>
-          <tr>
-            <th scope="row">Saturday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
-          </tr>
-          <tr>
-            <th scope="row">Sunday</th>
-            <td><input name="timeFrom" type="time" step="900"></td>
-            <td><input name="timeTo" type="time" step="900"></td>
-            <td><input name="Price" type="number" placeholder="Price" step="5"></td>
+          <tbody formArrayName="openingHours">
+          <tr *ngFor="let item of openingHoursArray.controls; let i = index">
+            <ng-container [formGroupName]="i">
+              <th scope="row">{{daysOfWeek[i]}}</th>
+              <td><input name="openFrom" type="time" step="900" formControlName="openFrom"></td>
+              <td><input name="openTo" type="time" step="900" formControlName="openTo"></td>
+              <td><input name="price" type="number" placeholder="Price" step="5" formControlName="price"></td>
+            </ng-container>
           </tr>
           </tbody>
         </table>

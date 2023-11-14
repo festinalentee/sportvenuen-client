@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {VenueService} from "../../service/venue.service";
-import {AuthService} from "../../service/auth.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -17,9 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private venueService: VenueService,
-    private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute,
   ) {
   }
 
@@ -29,8 +26,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchVenuesForm = this.formBuilder.group({
-      venueType: ['', Validators.required],
-      city: ['', Validators.required],
+      venueType: [''],
+      city: [''],
     });
   }
 

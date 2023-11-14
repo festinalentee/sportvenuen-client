@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {VenueService} from "../../service/venue.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -13,12 +13,13 @@ import {Venue} from "../../model/venue";
 export class AddVenueComponent implements OnInit {
 
   addVenueForm: FormGroup;
+  openingHoursArray: FormArray;
   loading = false;
   error = '';
   editMode = false;
   venueId: number;
   venue: Venue = new Venue();
-
+  daysOfWeek = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY']
   constructor(
     private formBuilder: FormBuilder,
     private venueService: VenueService,
@@ -75,7 +76,19 @@ export class AddVenueComponent implements OnInit {
       city: ['', Validators.required],
       postcode: ['', Validators.required],
       country: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      openingHours: this.formBuilder.array([])
+    });
+
+    this.openingHoursArray = this.addVenueForm.get('openingHours') as FormArray;
+
+    this.daysOfWeek.forEach((day) => {
+      this.openingHoursArray.push(this.formBuilder.group({
+        dayOfWeek: [day],
+        openFrom: ['', Validators.required],
+        openTo: ['', Validators.required],
+        price: ['', Validators.required],
+      }));
     });
 
     if (this.editMode) {
@@ -90,7 +103,18 @@ export class AddVenueComponent implements OnInit {
             city: [this.venue.city, Validators.required],
             postcode: [this.venue.postcode, Validators.required],
             country: [this.venue.country, Validators.required],
-            description: [this.venue.description, Validators.required]
+            description: [this.venue.description, Validators.required],
+            openingHours: this.formBuilder.array([])
+          });
+
+          const loadedOpeningHoursArray = this.addVenueForm.get('openingHours') as FormArray;
+          this.venue.openingHours.forEach((hours) => {
+            loadedOpeningHoursArray.push(this.formBuilder.group({
+              dayOfWeek: [hours.dayOfWeek, Validators.required],
+              openFrom: [hours.openFrom, Validators.required],
+              openTo: [hours.openTo, Validators.required],
+              price: [hours.price, Validators.required],
+            }));
           });
         }
       )
@@ -103,7 +127,11 @@ export class AddVenueComponent implements OnInit {
     }
     this.loading = true;
     if (!this.editMode) {
-      this.venueService.saveVenue(this.addVenueForm.value)
+      const venueData = {
+        ...this.addVenueForm.value,
+        openingHours: this.addVenueForm.value.openingHours.map((hours: any) => ({ ...hours })),
+      };
+      this.venueService.saveVenue(venueData)
         .subscribe({
           next: venue => {
             this.venueService.addVenueToUser(this.authService.userValue.id, venue.id).subscribe(

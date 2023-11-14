@@ -1,3 +1,5 @@
+import {OpenHours} from "./open-hours";
+
 export class Venue {
   id: number;
   venueType: string;
@@ -7,5 +9,6 @@ export class Venue {
   city: string;
   postcode: string;
   country: string;
+  openingHours: OpenHours[] = [];
   description: string;
 }

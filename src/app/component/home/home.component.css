@@ -8,9 +8,9 @@
 .img-container {
   margin: 0;
   width: 99vw;
-  background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("https://source.unsplash.com/bWYAiQ9jwYc/") no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url("https://source.unsplash.com/BWRyS1-KKrs/") no-repeat;
   background-size: cover;
-  background-position: 10%;
+  background-position: 80%;
   text-align: center;
   padding: 3em;
 }
@@ -25,6 +25,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 input {
