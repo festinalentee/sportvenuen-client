@@ -66,8 +66,8 @@
           <tr *ngFor="let item of openingHoursArray.controls; let i = index">
             <ng-container [formGroupName]="i">
               <th scope="row">{{daysOfWeek[i]}}</th>
-              <td><input name="openFrom" type="time" step="900" formControlName="openFrom"></td>
-              <td><input name="openTo" type="time" step="900" formControlName="openTo"></td>
+              <td><input name="openFrom" type="number" min="0" max="24" formControlName="openFrom"></td>
+              <td><input name="openTo" type="number" min="0" max="24" formControlName="openTo"></td>
               <td><input name="price" type="number" placeholder="Price" step="5" formControlName="price"></td>
             </ng-container>
           </tr>
