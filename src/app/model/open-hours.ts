@@ -1,7 +1,7 @@
 export class OpenHours {
   id: number;
   dayOfWeek: string;
-  openFrom: string;
-  openTo: string;
+  openFrom: number;
+  openTo: number;
   price: number;
 }

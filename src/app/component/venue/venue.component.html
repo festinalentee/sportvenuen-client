@@ -24,40 +24,10 @@
         <div class="table-container">
           <table class="table">
             <tbody>
-            <tr>
-              <th scope="row">Monday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
-            </tr>
-            <tr>
-              <th scope="row">Thuesday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
-            </tr>
-            <tr>
-              <th scope="row">Wednesday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
-            </tr>
-            <tr>
-              <th scope="row">Thursday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
-            </tr>
-            <tr>
-              <th scope="row">Friday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
-            </tr>
-            <tr>
-              <th scope="row">Saturday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
-            </tr>
-            <tr>
-              <th scope="row">Sunday</th>
-              <th scope="row">14:00 - 21:00</th>
-              <th scope="row">$20.00/h</th>
+            <tr *ngFor="let item of venue.openingHours">
+              <th scope="row">{{item.dayOfWeek}}</th>
+              <th scope="row">{{item.openFrom}}:00 - {{item.openTo}}:00</th>
+              <th scope="row">${{item.price}}/h</th>
             </tr>
             </tbody>
           </table>
