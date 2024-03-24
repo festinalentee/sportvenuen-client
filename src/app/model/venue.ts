@@ -1,4 +1,5 @@
 import {OpenHours} from "./open-hours";
+import {Booking} from "./booking";
 
 export class Venue {
   id: number;
@@ -11,4 +12,5 @@ export class Venue {
   country: string;
   openingHours: OpenHours[] = [];
   description: string;
+  bookings: Booking[];
 }

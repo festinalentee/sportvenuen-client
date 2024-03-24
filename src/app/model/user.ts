@@ -1,5 +1,6 @@
 import {Role} from "./role";
 import {Venue} from "./venue";
+import {Booking} from "./booking";
 
 export class User {
   id: number;
@@ -11,4 +12,5 @@ export class User {
   roles: Role[];
   venues: Venue[];
   favourites: Venue[];
+  bookings: Booking[];
 }

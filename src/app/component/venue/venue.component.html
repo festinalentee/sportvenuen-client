@@ -47,10 +47,10 @@
       <div class="tile-container">
         <div class="up-info">
           <h6>We need this details for booking</h6>
-          <form>
-            <input name="date" type="date">
-            <input name="timeFrom" type="time" step="900">
-            <input name="timeTo" type="time" step="900">
+          <form [formGroup]="bookVenueForm" (ngSubmit)="onSubmit()">
+            <input name="date" type="date" formControlName="date">
+            <input name="timeFrom" type="number" step="900" formControlName="timeFrom">
+            <input name="timeTo" type="number" step="900" formControlName="timeTo">
             <button type="submit" class="bookNowButton">BOOK NOW</button>
           </form>
         </div>

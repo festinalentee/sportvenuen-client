@@ -88,11 +88,11 @@
         <label for="file">Select files</label>
       </div>
       <div *ngIf="!editMode; else myElse" class="add">
-        <button type="submit" class="addVenueButton">Add Venue</button>
+        <button [attr.disabled]="loading ? '' : null" type="submit" class="addVenueButton">Add Venue</button>
       </div>
       <ng-template #myElse>
         <div class="add">
-          <button type="submit" class="addVenueButton">Update Venue</button>
+          <button [attr.disabled]="loading ? '' : null" type="submit" class="addVenueButton">Update Venue</button>
         </div>
       </ng-template>
     </div>
